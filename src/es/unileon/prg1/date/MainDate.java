@@ -1,16 +1,12 @@
 package es.unileon.prg1.date;
 
-public class MainDate {
+public class MainDate{
 
-	public static void main(String[] args) {
-		Date today;
-		
-		try {
-			today = new Date(11,11,2020);
-			System.out.println(today);
-		} catch (DateException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
+    public static void main(String[] args){
+        try{
+        Date cumpleaños= new Date(2, 12,2003);
+        System.out.println(cumpleaños.DateString());
+        System.out.println(cumpleaños.Monthsleft());
+         } catch(DateException e){System.out.println(e.getMessage());}
+    }
 }
