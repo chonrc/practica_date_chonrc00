@@ -10,7 +10,7 @@ throws DateException {
   this.day = day;
   this.month = month;
   this.year= year;
-  if ((year<1) || month<1 || month>12 || day<1 || day>Monthdays() )
+  if ((year<1) || month<1 || month>12 || day<1 || day>Monthdays(this.month) )
   {throw new DateException("Invalid parameter");}
 }
 
@@ -35,8 +35,8 @@ public boolean isSame(Date fecha){
     
 }
 
-public String Monthname(){
-    int mes = this.month;
+public String Monthname(int mes){
+    
     switch(mes){
         case 1: return "Enero";
         case 2: return "Febrero";
@@ -54,8 +54,7 @@ public String Monthname(){
     }
 }
 
-public int Monthdays(){
-    int mes = this.month;
+public int Monthdays(int mes){
     switch(mes){
         case 1:
         case 3:
@@ -95,28 +94,43 @@ public String Monthseason(){
 }
 
 public int Monthsleft(){
-    int days = 12 - this.month;
-    return days; 
+    int Monthsleft = 12 - this.month;
+    return Monthsleft; 
 }
 
 public String DateString(){
     String dia = Integer.toString(this.day);
     String año = Integer.toString(this.year);
-    String resultado = (dia +"-"+ Monthname() + "-"+ año);
+    String resultado = (dia +"-"+ Monthname(this.month) + "-"+ año);
     return resultado;
 }
 
-public String Datesleft(int dia){
-    dia = this.day;
-    for(i=dia; i<=Monthdays();i++){
-        Date x = new Date (x++,this.month,this.year){
-            return Date
+public void Datesleft(){
+    for (int i =this.day;i<=Monthdays(this.month);i++){
+        System.out.println(i + "-" + this.month + "-"+ this.year );
+    }}
 
-        }
+public void sameMonthdays(){
+    if (Monthdays(this.month)==28|| Monthdays(this.month)==29){
+        System.out.println("Febrero");}
+    if (Monthdays(this.month)==4||Monthdays(this.month)==6||Monthdays(this.month)==9||Monthdays(this.month)==11){
+        System.out.println(Monthname(4)+" "+Monthname(6)+" "+Monthname(9)+" "+Monthname(11));
+    }else{
+        System.out.println(Monthname(1)+" "+Monthname(3)+" "+Monthname(5)+" "+Monthname(7)+" "+Monthname(8)+" "+Monthname(10)+" "+Monthname(12));}
+        
+}
 
+public int dayspassed(){
+    int suma= 0;
+    for (int x=1;x<this.month;x++){
+    for(int i =1;i<=Monthdays(x);i++){
+        suma = suma+1;
+    }}
+
+    for (int i=1;i<=this.day;i++){
+        suma = suma +1;
     }
-
-
+    return suma;
 }
 
 
