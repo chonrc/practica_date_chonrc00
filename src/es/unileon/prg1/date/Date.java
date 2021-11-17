@@ -133,6 +133,41 @@ public int dayspassed(){
     return suma;
 }
 
+// public int AttempstoDate(){
+//     int day = 0;
+//     int months = 0;
+//     int attemps= 0;
+// while (day !=this.day && months!= this.month){
+   // months = (int)(Math.random()*(12+1)); 
+//     day = (int)(Math.random()*(Monthdays(months)+1));  
+//      
+//     attemps = attemps+1;
+// }
+// return attemps;
+// }
+
+
+public int AttempstoDate(){
+    int day = 0;
+    int months = 0;
+    int attemps= 0;
+do {
+   
+    months = (int)(Math.random()*(12+1));  
+    day = (int)(Math.random()*(Monthdays(months)+1));  
+    
+    attemps = attemps+1;
+}while(day !=this.day && months!= this.month);
+return attemps;
+}
+
+public void today(){
+    int[] meses = {0,3,2,5,0,3,5,1,4,6,2,4};
+    if (this.month<3){
+        year = year -1;}
+       int  primero = (this.year+(this.year/4)-(this.year/100)+(this.year/400)+meses[this.month-1]+this.day)%7;    
+    System.out.println(primero);
+}
 
 public String toString(){
     return this.day + " " + this.month + " " + this.year;
